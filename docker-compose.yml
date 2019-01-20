@@ -1,0 +1,15 @@
+version: "3.6"
+services:
+  app:
+    build: ./app
+    ports:
+      - "80:5000"
+    depends_on:
+      - sampledb
+  sampledb:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_DATABASE: sample
+    volumes:
+      - './data-persistance:/data/db'
+
